@@ -1,0 +1,70 @@
+@font-face {
+    font-family: Torus;
+    src: url("Assets/TorusRegular.otf") format("opentype");
+}
+
+body {
+    background-color: #080010;
+    color: #fff;
+    margin: 0;
+}
+
+body * {
+    border: 1px solid red;
+}
+
+#ham-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Torus;
+    height: calc(100vh - 2px);
+}
+
+#ham-game {
+    /*width: max-content;
+    height: max-content;*/
+}
+
+#ham-title {
+    font-size: 32pt;
+    padding-bottom: 100pt;
+}
+
+#ham-playfield {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+@media only screen and (max-width: 900px) {
+    #ham-playfield {
+        width: 70vw;
+        height: 70vw;
+    }
+
+    #ham-title {
+        font-size: calc(7vw)
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #ham-playfield {
+        width: 70vh;
+        height: 70vh;
+    }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100%/3);
+}
+
+.row > * {
+    width: calc(100% / 3);
+    height: 100%;
+}
