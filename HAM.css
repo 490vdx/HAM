@@ -9,9 +9,9 @@ body {
     margin: 0;
 }
 
-body * {
+/*body * {
     border: 1px solid red;
-}
+}*/
 
 #ham-container {
     display: flex;
@@ -29,6 +29,9 @@ body * {
 #ham-title {
     font-size: 32pt;
     padding-bottom: 100pt;
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 #ham-playfield {
@@ -43,6 +46,7 @@ body * {
     #ham-playfield {
         width: 70vw;
         height: 70vw;
+        /*border: solid 2px yellow;*/
     }
 
     #ham-title {
@@ -54,7 +58,15 @@ body * {
     #ham-playfield {
         width: 70vh;
         height: 70vh;
+        /*border: solid 2px blue;*/
     }
+}
+
+.field {
+    border: 4px dashed red;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .row {
@@ -64,7 +76,17 @@ body * {
     height: calc(100%/3);
 }
 
+.field-img {
+    width: 70%;
+}
+
 .row > * {
     width: calc(100% / 3);
     height: 100%;
+}
+
+.status {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
