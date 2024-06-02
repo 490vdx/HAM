@@ -7,7 +7,7 @@ fields:
  (bool array, indexes starting from 0)
 */
 
-function RandomInt(minInc, maxInc) {
+/*function RandomInt(minInc, maxInc) {
     let min = Math.round(minInc);
     let max = Math.round(maxInc) + 1;
 
@@ -62,4 +62,19 @@ function GetBotMove(botFields, playerfields)
     if (!botFields[4] && !playerfields[4]) return 4;
 
     if (!botFields[Math.random()])
+}*/ // Walić to, wracam do losowania pozycji, a nuż dobrze trafi
+
+function GetBotMove(fields) {
+    let fCount = 0;
+    for (field of fields) {
+        if (field != 0) fCount ++;
+    }
+
+    if (fCount == 9) return -1;
+    let r = 0;
+    do {
+        r = Math.floor(Math.random() * 9)
+    } while (fields[r] != 0);
+
+    return r;
 }

@@ -51,14 +51,14 @@ function FieldClick(id) {
 
     fields[id] = 1;
 
-    let bot = [];
+    /*let bot = [];
     let human = [];
     for (field of fields) {
         bot.push(field == 2);
         human.push(field == 1);
-    }
+    }*/
 
-    fields[GetBotMove(bot, human)] = 2; // nie chce mi się bawić w delay/settimeout, to jest bot, a nie imitacja człowieka
+    fields[GetBotMove(fields)] = 2; // nie chce mi się bawić w delay/settimeout, to jest bot, a nie imitacja człowieka
 
     UpdateFields();
 }
