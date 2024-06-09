@@ -67,13 +67,13 @@ function GetBotMove(botFields, playerfields)
 function GetBotMove(fields) {
     let fCount = 0;
     for (field of fields) {
-        if (field != 0) fCount ++;
+        if (field !== 0) fCount ++;
     }
 
     if (fCount == 9) return -1;
     let r = 0;
     do {
-        r = Math.floor(Math.random() * 9)
+        r = Math.floor(Math.random() * 9);
     } while (fields[r] != 0);
 
     return r;

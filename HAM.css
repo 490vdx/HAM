@@ -9,6 +9,16 @@ body {
     margin: 0;
 }
 
+#reset {
+    background-image: linear-gradient(to bottom, #303080, #101040);
+    border-style: none;
+    color: white;
+    width: 128px;
+    height: 48px;
+    font-size: 24px;
+    border-radius: 16px;
+}
+
 /*body * {
     border: 1px solid red;
 }*/
@@ -24,13 +34,35 @@ body {
 #ham-game {
     /*width: max-content;
     height: max-content;*/
+
+    background-image: linear-gradient(to bottom, #202050, #101020);
+
+    width: 768px;
+    height: 768px;
+
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #ham-title {
     font-size: 32pt;
-    padding-bottom: 100pt;
+    padding-bottom: 16px;
     display: flex;
+    flex-direction: column;
     width: 100%;
+    align-items: center;
+    gap: 16px;
+}
+
+#ham-playfield-container {
+    width: 100%;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
@@ -38,35 +70,20 @@ body {
     display: flex;
     flex-direction: column;
 
-    width: 100%;
+    height: 90%;
     aspect-ratio: 1 / 1;
 }
 
-@media only screen and (max-width: 900px) {
-    #ham-playfield {
-        width: 70vw;
-        height: 70vw;
-        /*border: solid 2px yellow;*/
-    }
-
-    #ham-title {
-        font-size: calc(7vw)
-    }
-}
-
-@media only screen and (min-width: 900px) {
-    #ham-playfield {
-        width: 70vh;
-        height: 70vh;
-        /*border: solid 2px blue;*/
-    }
-}
-
 .field {
-    border: 4px dashed red;
+    border: 2px solid white;
     display: flex;
-    align-content: center;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    width: calc(100% / 3 - 4px);
+    height: calc(100% - 4px);
+
+    font-size: 96px;
 }
 
 .row {
@@ -76,17 +93,19 @@ body {
     height: calc(100%/3);
 }
 
-.field-img {
-    width: 70%;
-}
-
-.row > * {
-    width: calc(100% / 3);
-    height: 100%;
-}
-
-.status {
+#status {
     display: flex;
     width: 100%;
-    justify-content: center;
+    gap: 16px;
+    padding-bottom: 16px;
+    flex-direction: column;
+    align-items: center;
+
+    font-size: 32px;
+}
+
+.separator {
+    width: 704px;
+    height: 1px;
+    background-color: #fff;
 }

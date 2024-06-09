@@ -9,24 +9,33 @@
 <body>
     <div id="ham-container">
         <div id="ham-game">
-            <div id="ham-title">Tic-Ham-Toe</div>
-            <div id="status">Your turn!</div>
-            <div id="ham-playfield">
-                <span class="row">
-                    <div class="field" id="n1"></div>
-                    <div class="field" id="n2"></div>
-                    <div class="field" id="n3"></div>
-                </span>
-                <span class="row">
-                    <div class="field" id="n4"></div>
-                    <div class="field" id="n5"></div>
-                    <div class="field" id="n6"></div>
-                </span>
-                <span class="row">
-                    <div class="field" id="n7"></div>
-                    <div class="field" id="n8"></div>
-                    <div class="field" id="n9"></div>
-                </span>
+            <div id="ham-title">
+                Tic-Ham-Toe
+                <div class="separator"></div>
+            </div>
+            <div id="status">
+                <div id="status-content">Your turn!</div>
+                <button id="reset" onclick="Reset()">Reset</button>
+                <div class="separator"></div>
+            </div>
+            <div id="ham-playfield-container">
+                <div id="ham-playfield">
+                    <span class="row">
+                        <div class="field" id="n1"></div>
+                        <div class="field" id="n2"></div>
+                        <div class="field" id="n3"></div>
+                    </span>
+                    <span class="row">
+                        <div class="field" id="n4"></div>
+                        <div class="field" id="n5"></div>
+                        <div class="field" id="n6"></div>
+                    </span>
+                    <span class="row">
+                        <div class="field" id="n7"></div>
+                        <div class="field" id="n8"></div>
+                        <div class="field" id="n9"></div>
+                    </span>
+                </div>
             </div> 
         </div>
     </div>

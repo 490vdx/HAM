@@ -10,10 +10,12 @@ const fieldsHTML = [
     document.querySelector("#n9")
 ];
 
-const cellStatus = document.querySelector("#status");
+const resetBtn = document.querySelector("#reset");
+
+const cellStatus = document.querySelector("#status-content");
 
 // 0 = none, 1 = player, 2 = bot
-const fields = [
+let fields = [
     0,
     0,
     0,
@@ -25,27 +27,65 @@ const fields = [
     0
 ];
 
+let gameRunning = true;
+
+function Reset() {
+    fields = [0,0,0,0,0,0,0,0,0];
+    UpdateFields();
+    cellStatus.innerHTML = "Your turn!"
+
+    gameRunning = true;
+}
+
+const winningCombos = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]  
+];
+
 function UpdateFields() {
     for (field in fields) {
+        if (field < 0) continue;
         switch (fields[field]){
             case 0:
-                fieldsHTML[field].innerHTML = `<img class="field-img" src=""></img>`;
+                fieldsHTML[field].innerHTML = ``;
                 break;
             case 1:
-                fieldsHTML[field].innerHTML = `<img class="field-img" src="./Assets/circle.svg"></img>`;
+                fieldsHTML[field].innerHTML = `X`;
                 break;
             case 2:
-                fieldsHTML[field].innerHTML = `<img class="field-img" src="./Assets/cross.svg"></img>`;
+                fieldsHTML[field].innerHTML = `O`;
                 break;
         }
     }
 }
 
+function ShowRetry() {
+
+}
+
+function PlayerWin() {
+    cellStatus.innerHTML = "You won!";
+    gameRunning = false;
+}
+
+function BotWin() {
+    cellStatus.innerHTML = "You lost!";
+    gameRunning = false;
+}
+
 function FieldClick(id) {
+    if (!gameRunning) return;
+
+    cellStatus.innerHTML = "Your turn!";
     if (fields[id] !== 0) {
         let ocs = cellStatus.innerHTML;
-        cellStatus.innerHTML = "Ty debilu";
-        setTimeout(() => {cellStatus.innerHTML = ocs; }, 2000);
+        cellStatus.innerHTML = "This field is already taken! (your turn anyway)";
         return;
     }
 
@@ -57,10 +97,41 @@ function FieldClick(id) {
         bot.push(field == 2);
         human.push(field == 1);
     }*/
-
+    try {
     fields[GetBotMove(fields)] = 2; // nie chce mi się bawić w delay/settimeout, to jest bot, a nie imitacja człowieka
+    } catch (e) {
 
+    }
     UpdateFields();
+
+    for (combo of winningCombos) {
+        if (winningCombos.some(
+            (elem) => fields[elem[0]] == 1 
+            && fields[elem[1]] == 1 
+            && fields[elem[2]] == 1
+        )) {
+            PlayerWin();
+            return;
+        }
+        else if (winningCombos.some(
+            (elem) => fields[elem[0]] == 2 
+            && fields[elem[1]] == 2
+            && fields[elem[2]] == 2
+        )) {
+            BotWin();
+            return;
+        }
+    }
+
+    let fCount = 0;
+    for (field of fields) {
+        if (field !== 0) fCount ++;
+    }
+
+    if (fCount === 9) {
+        cellStatus.innerHTML = "It's a tie!";
+        gameRunning = false;
+    }
 }
 
 
